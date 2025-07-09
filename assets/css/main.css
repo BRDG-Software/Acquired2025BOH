@@ -1,0 +1,211 @@
+.switch.xl {
+  position: relative;
+  display: inline-block;
+  width: 13.5vw;
+  height: 7vh;
+}
+
+.switch.xl input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 5.8vw;
+  height: 5vh;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  outline: .2vw solid white;
+  outline-offset: .3vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d53f53;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 5vh;
+  width: 3vw;
+  left: 0px;
+  bottom: 0vh;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #21ebbc;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #21ebbc;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(3vw);
+  -ms-transform: translateX(3vw);
+  transform: translateX(3vw);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 30vw;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+input:checked + .slider.chonk:before {
+  -webkit-transform: translateX(3vw);
+  -ms-transform: translateX(3vw);
+  transform: translateX(7.6vw);
+  content:"ON";
+}
+:root {
+  --content-text: "OFF";
+}
+.slider.chonk {
+  border-radius: .5vw;
+}
+.slider.chonk:before {
+  border-radius: 15%;
+   position: absolute;
+  font-family: 'MarsdenRegular';
+  font-size: 5vh;
+  text-align: center;
+  line-height:6.5vh;
+  content: "OFF";
+  height: 7vh;
+  width: 6vw;
+  left: 0vw;
+  bottom: 0vh;
+  background-color: white;
+}
+html, body {
+  max-width:1920px;
+  max-height:1080px;
+  
+}
+body {
+  overflow:hidden;
+  background-color:#02AEAA;
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.container {
+  background-color: #000000;
+}
+h1 {
+    user-select:none;
+    font-size:3vw;
+    color: #fff;
+    font-family: 'MarsdenMedium';
+    position: relative;
+    display: inline-block;
+    padding-right:2vw;
+    line-height:0;
+
+
+}
+h2 {
+    user-select:none;
+    font-size:2vw;
+    color: #fff;
+    font-family: 'MarsdenMedium';
+    position: relative;
+    display: inline-block;
+    padding-right:2vw;
+    line-height:0;
+}
+h3 {
+    user-select:none;
+    font-size:3vw;
+    color: #fff;
+    font-family: 'MarsdenLight';
+    position: relative;
+    display: inline-block;
+    padding-right:2vw;
+    line-height:0;
+}
+img {
+  user-select:none;
+}
+div {
+  display:block;
+  line-height:5;
+}
+.button {
+  /*
+  box-shadow: 1vw 1vh 2vw 0 rgba(0,0,0,0.25), 0 1vh 2vw 0 rgba(0,0,0,0.25);
+  */
+  border: none !important;
+  position:relative;
+  font-family: 'MarsdenMedium';
+  font-size:5.5vh;
+  color: #fff;
+  background-color: #8c8c8c;
+  border-radius:45vh;
+}
+.button.smol {
+  width:12vw;
+  height:10vh;
+}
+.button.large {
+  width:30vw;
+  height:15vh; 
+}
+
+@font-face {
+    font-family: 'MarsdenMedium';
+    src: url('/fonts/Marsden-S-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'MarsdenRegular';
+    src: url('/fonts/Marsden-S-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'MarsdenLight';
+    src: url('/fonts/Marsden-S-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'MarsdenHeavy';
+    src: url('/fonts/Marsden-S-Heavy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'AmplitudeLight';
+    src: url('/fonts/Amplitude-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'AmplitudeMedium';
+    src: url('/fonts/Amplitude-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
