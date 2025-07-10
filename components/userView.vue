@@ -1,16 +1,8 @@
-<script>
-import datas from './public/json/currentSession.json'
-
-export default {
-	data() {
-		return {
-			datas: datas["session"]
-		}
-	},
-	mounted() {
-		//console.log(datas)
-	}
-}
+<script setup>
+defineProps({
+	HatColor:Number, 
+	Pin: Number
+})
 </script>
 <template>
 <div class="container" style="
@@ -37,33 +29,33 @@ export default {
 		left:8.5vw;
 		top:2vh;
 	">
-		<h2 v-if="datas.Color == 1"> Pale Grey</h2>
-		<h2 v-if="datas.Color == 2"> Heathered Charcoal</h2>
-		<h2 v-if="datas.Color == 3"> Jet Black</h2>
+		<h2 v-if="HatColor == 1"> Pale Grey</h2>
+		<h2 v-if="HatColor == 2"> Heathered Charcoal</h2>
+		<h2 v-if="HatColor == 3"> Jet Black</h2>
 	</div>
-	<div class="colorcircle" v-if="datas.Color == 1">
+	<div class="colorcircle" v-if="HatColor == 1">
 		<span style="background-color: #dddbd6;">
 		</span>
 	</div>
-	<div class="colorcircle" v-if="datas.Color == 2">
+	<div class="colorcircle" v-if="HatColor == 2">
 		<span style="background-color: #898f8f;">
 		</span>
 	</div>
-	<div class="colorcircle" v-if="datas.Color == 3">
+	<div class="colorcircle" v-if="HatColor == 3">
 		<span style="background-color: #151717;">
 		</span>
 	</div>
-	<div class="pin-img" v-if="datas.Pin == 1">
+	<div class="pin-img" v-if="Pin == 1">
 		<img class="pins" src="public/icons/company.svg" />
 	</div>
-	<div class="pin-img" v-if="datas.Pin == 2">	
+	<div class="pin-img" v-if="Pin == 2">	
 		<img class="pins" src="public/icons/bullbear.svg" />
 	</div>
-	<div class="pin-img" v-if="datas.Pin == 3">
+	<div class="pin-img" v-if="Pin == 3">
 		<img class="pins" src="public/icons/carveouts.svg" />
 	</div>
 	<div style="position:absolute; top:10vh; left:35vw">	
-	<h1> PIN DESIGN: {{datas.UserName}}</h1>
+	<h1> PIN DESIGN:</h1>
 	</div>	
 </div>
 </template>

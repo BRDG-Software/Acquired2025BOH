@@ -58,12 +58,12 @@ function checkCamera() {
 	    .then(devices => {
 	        //const microphones = devices.filter(d => d.kind === 'audioinput');
 	        const cameras = devices.filter(d => d.kind === 'videoinput');
-	        console.log(cameras[2].label)
+	        //console.log(cameras[2].label)
 	        //console.log(cameras.label[2])
 	        for (let i = 0; i < cameras.length; i++) {
-	        	console.log(cameras[i].label)
+	        	//console.log(cameras[i].label)
 	        	if (cameras[i].label == camId) {
-	        		console.log("CAMERA FOUND")
+	        		//console.log("CAMERA FOUND")
 	        	}
 	        }
 	    });

@@ -1,75 +1,15 @@
-# Nuxt Minimal Starter
+inside main folder on local machine
+- git clone [repoURL]
+- cd into github folder then:
+	npm install
+	-install all dependencies from package.json
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+	setup env file
+	-create .env file at root
+	-create variable KIOSK=1 
+	-1 or 2 depending on kiosk. this will tie it to a specific paypad app
 
-## Setup
+	npm run dev
+	-serving on localhost:3232
 
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- setup script to open app in fullscreen from startup
