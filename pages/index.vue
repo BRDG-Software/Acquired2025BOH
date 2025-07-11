@@ -3,8 +3,6 @@ const { $event } = useNuxtApp()
 const { $listen } = useNuxtApp()
 const config = useRuntimeConfig()
 
-const kiosk = config.public.kiosk
-
 let hatColor = ref(0)
 let pinColor = ref(0)
 
@@ -38,7 +36,6 @@ let items  = []
 let orders = []
 let orderId = 0;
 ////// the ids of the corresponding entry items
-const kiosks = [2,3]
 const hatItems = [6,7,8]
 const pinItems = [9,10,11]
 let hatAvailable = [true, true, true]
@@ -48,7 +45,7 @@ const doStockCheck = 1;
 const doOrderCheck = 1;
 const stockCheckFrequency = 10000;
 const orderCheckFrequency = 10000;
-const current_kiosk = kiosks[kiosk-1]
+const current_kiosk = config.public.kiosk
 console.log("current kiosk: ", current_kiosk)
 
 $listen('cancel', (value) => {
