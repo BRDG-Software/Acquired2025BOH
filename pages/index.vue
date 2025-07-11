@@ -43,10 +43,13 @@ let pinAvailable = [true,true,true]
 let hats = []
 const doStockCheck = 1;
 const doOrderCheck = 1;
-const stockCheckFrequency = 10000;
-const orderCheckFrequency = 10000;
-const current_kiosk = config.public.kiosk
+const stockCheckFrequency = config.public.polltime_stock;//10000;
+const orderCheckFrequency = config.public.polltime_order;//10000;
+const current_kiosk = config.public.kiosk;
+
 console.log("current kiosk: ", current_kiosk)
+console.log("current stock check frequency: ", stockCheckFrequency)
+console.log("current order check frequency: ", orderCheckFrequency)
 
 $listen('cancel', (value) => {
 	console.log('cancel button hit!')
@@ -83,8 +86,9 @@ $listen('pintoggle3', (state) => {
 
 const getOrders = async () => {
 	try {
+		console.log("checking orders")
 		orders.value = await $fetch('https://api.jpmp.brdg.jarv.us/kiosks/'+current_kiosk)
-		console.log(orders.value.currentOrder)
+		//console.log(orders.value.currentOrder)
 	} catch (error) {
 		console.log('error getting orders: ', error)
 	} finally {
@@ -94,14 +98,30 @@ const getOrders = async () => {
 		wait(getOrders, orderCheckFrequency)
 	}
 }
+let current_hat = ""
+let current_pin = ""
 function checkOrders() {
-	let current_hat = orders.value.currentOrder.items[0].item_id
+	//console.log(orders.value.currentOrder.items[1].item_id)
+	let orderItems = orders.value.currentOrder.items
+	
+	for (let i = 0; i < orderItems.length; i++) {
+		let currentOrderItemId = orderItems[i].item_id
+		if (hatItems.includes(currentOrderItemId) == true) {
+			//console.log("hat is ", currentOrderItemId)
+			current_hat = currentOrderItemId
+		}
+		if (pinItems.includes(currentOrderItemId) == true) {
+			//console.log("pin is ", currentOrderItemId)
+			current_pin = currentOrderItemId
+		}
+	}
 	let current_status = orders.value.currentOrder.status
-	//let current_pin = 0
-	console.log(current_status)
+	
+	//console.log(current_status)
 	if (current_status == "pending") {
 		orderId = orders.value.currentOrder.id
-		hatColor.value = hatItems.indexOf(current_hat)+1 
+		hatColor.value = hatItems.indexOf(current_hat)+1
+		pinColor.value = pinItems.indexOf(current_pin)+1 
 	}
 }
 const getItems = async () => {
@@ -129,13 +149,13 @@ async function wait( callback, millis ) {
 function fireHatToggles(indexo, available) {
 	let intty = parseInt(indexo)
 	intty = intty+ 1
-	console.log("Hat " + intty + " available: " + available)
+	//console.log("Hat " + intty + " available: " + available)
 		$event('hatupdate'+intty, available)
 }
 function firePinToggles(indexo, available) {
 	let intty = parseInt(indexo)
 	intty = intty+ 1
-	console.log("Pin " + intty + " available: " + available)
+	//console.log("Pin " + intty + " available: " + available)
 		$event('pinupdate'+intty, available)
 }
 function checkStock() {

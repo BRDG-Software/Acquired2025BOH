@@ -8,7 +8,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {
-      kiosk: process.env.KIOSK || "create KIOSK=1 in .env file"
+      kiosk: process.env.KIOSK || '0',
+      polltime_stock: process.env.POLLTIME_STOCK || '10000',
+      polltime_order: process.env.POLLTIME_ORDER || '10000'
     }
   }
 })
