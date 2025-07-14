@@ -45,14 +45,23 @@ let hats = []
 const doStockCheck = 1;
 const doOrderCheck = 1;
 
-//const query_stock = useRoute().query.stocktime
-//const query_order = useRoute().query.ordertime
-//const query_kiosk = useRoute().query.kiosk
 
-	const current_kiosk = config.public.kiosk;	
-	const stockCheckFrequency = config.public.polltime_stock;
-	const orderCheckFrequency = config.public.polltime_order;
+const query_stock = useRoute().query.stocktime
+const query_order = useRoute().query.ordertime
+const query_kiosk = useRoute().query.kiosk
+let current_kiosk = config.public.kiosk;
+let stockCheckFrequency = config.public.polltime_stock;
+let orderCheckFrequency = config.public.polltime_order;
 
+if (query_kiosk) {
+	current_kiosk = query_kiosk
+}
+if (query_stock) {
+	stockCheckFrequency = query_stock
+}
+if (query_order) {
+	orderCheckFrequency = query_order
+}
 
 console.log("current kiosk: ", current_kiosk)
 console.log("current stock check frequency: ", stockCheckFrequency)

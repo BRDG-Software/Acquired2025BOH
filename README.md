@@ -9,8 +9,8 @@ BOH PC SETUP
 	-run installer, keeping all default settings
 
 3. verify with 
-	-in cli: "node --version"
-	-in cli: "git --version"
+	-in cli: "node -v"
+	-in cli: "git -v"
 
 4. install app
 	-in cli in local app folder: "git clone [thisRepoURL]"
@@ -29,8 +29,36 @@ BOH PC SETUP
 		serving on localhost:3232
 
 5. enable the app to run as a process on startup
-	-install pm2 (node process manager)
+	
+	install pm2 (node process manager):
+	-npm pm2 install -g
+	-pm2 list (lists processes)
+	-pm2 kill (kills all processes)
 
+	build deployment server:
+	-npm run build
 
-	POLLTIME_STOCK=10000
-POLLTIME_ORDER=10000
+	run the link in pm2-dev to preview it:
+	-pm2-dev .output/server/index.mjs
+
+	go live with production server:
+	-pm2 start --name 'hat-boh-app' .output/server/index.mjs
+
+npm run build
+-build nuxt production server
+-get the link to the index.mjs file and run it in pm2 dev
+pm2-dev .output/server/index.mjs
+confirm it's running properly
+
+then run in pm2 in cluster mode
+-pm2 start ./ecosystem.config.cjs --env production
+
+more on cluster mode:
+https://pm2.keymetrics.io/docs/usage/cluster-mode/
+
+in a webrowser, access the api from: 
+-http://localhost:3333/kiosk?kiosk=3&stocktime=5000&ordertime=5000
+kiosk     = the id # of the corresponding paypad
+stocktime = the millisecond interval to poll the backend for item availability
+ordertime = the millisecond interval to poll the backend for orders
+ 
